@@ -87,17 +87,27 @@ public class LinkStrand implements IDnaStrand {
 		
 		LinkStrand Ola = new LinkStrand();
 		Node newFirst1 = myFirst;
+		
+		StringBuilder copy = new StringBuilder(newFirst1.info);
+		copy.reverse();
+		String newCopy = copy.toString();
+		Ola.myFirst.info = newCopy;
+		newFirst1 = newFirst1.next;
+	
 
 		while (newFirst1 != null) {
-			StringBuilder copy = new StringBuilder(newFirst1.info);
-			copy.reverse();
-			String newCopy = copy.toString();
-			Node newNode = new Node(newCopy);
+			StringBuilder copy1 = new StringBuilder(newFirst1.info);
+			copy1.reverse();
+			String newCopy1 = copy1.toString();
+			Node newNode = new Node(newCopy1);
 			newNode.next = Ola.myFirst;
 			Ola.myFirst = newNode;
 			newFirst1 = newFirst1.next;
-	
-
+		}
+		
+		while (Ola != null) {
+			 
+			
 		}
 
 		return Ola;
