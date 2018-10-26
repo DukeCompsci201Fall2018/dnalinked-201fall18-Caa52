@@ -30,7 +30,7 @@ public class DNABenchmark {
 	private static final String ENZYME = "gaattc";
 	private static final int TRIALS = 2;
 	
-	private static String mySource;
+	private static String mySource;  
 
 	/**
 	 * Return a string representing the DNA read from the scanner, ignoring any
