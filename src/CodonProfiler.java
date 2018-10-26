@@ -12,9 +12,6 @@ public class CodonProfiler {
 	 * @return int[] such that int[k] is number of occurrences of codons[k] in 
 	 * strand. 
 	 */
-	
-		
-
 		
 		
 	public int[] getCodonProfile(IDnaStrand strand, String[] codons) {

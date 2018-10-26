@@ -84,7 +84,34 @@ public class LinkStrand implements IDnaStrand {
 
 	@Override
 	public IDnaStrand reverse() {
-		// myLast = myFirst;
+		
+		myLast=myFirst;
+		if (myLast==null){
+			return this;
+		}
+		Node current=myFirst;
+		Node current2=myFirst.next;
+		Node current3=null;
+		if (current.next==null){
+		StringBuilder info=new StringBuilder(current.info);
+		info.reverse();
+		current.info=info.toString();
+		return this;
+		}
+		while (current.next!=null){
+			StringBuilder info=new StringBuilder(current.info);
+			info.reverse();
+			current.info=info.toString();
+			current.next=current3;
+			current3=current;
+			current=current2;
+			current2=current.next;
+		
+		}	
+		myFirst=current;
+
+		return this;
+	/*	
 		LinkStrand Ola = new LinkStrand();
 		Node newFirst1 = myFirst;
 
@@ -100,7 +127,7 @@ public class LinkStrand implements IDnaStrand {
 		}
 
 		return Ola;
-
+*/
 		// iterate linked list
 		// when find node, create copy but in reverse
 		//
