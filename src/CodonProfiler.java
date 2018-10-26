@@ -32,7 +32,7 @@ public class CodonProfiler {
 			}
 			String cod = "" + a + b + c;
 			if (!map.containsKey(cod)) {
-				map.put(cod, 1);
+				map.put(cod, 0);
 
 			}
 			if (map.containsKey(cod)) {
@@ -43,10 +43,12 @@ public class CodonProfiler {
 		for(int i= 0; i < codons.length; i++ ) {
 			if(map.containsKey(codons[i])) {
 				ret[i] = map.get(codons[i]);
-			}
+			}                
 			
 		}
 
 		return ret;
 	}
 }
+
+
