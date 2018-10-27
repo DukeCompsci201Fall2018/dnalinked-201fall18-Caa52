@@ -159,7 +159,7 @@ public class LinkStrand implements IDnaStrand {
 		String newCopy1 = copyBuilder1.toString();
 		LinkStrand Ola = new LinkStrand(newCopy1);
 		newFirst1 = newFirst1.next;
-
+// implement while loop
 		while (newFirst1 != null) {
 			copyBuilder1 = new StringBuilder();
 			copyBuilder1.append(newFirst1.info);
@@ -167,6 +167,7 @@ public class LinkStrand implements IDnaStrand {
 			Ola.myLast.next = new Node(copyBuilder1.toString());
 			Ola.mySize += copyBuilder1.length();
 			Ola.myLast = Ola.myLast.next;
+			
 			newFirst1 = newFirst1.next;
 			newCopy1 = copyBuilder1.toString(); // changes the node to string
 			Node newNode = new Node(newCopy1);
@@ -175,6 +176,7 @@ public class LinkStrand implements IDnaStrand {
 		Node formerCurrent = null;
 		Node thisNode = Ola.myFirst;
 		Node nextNode = null;
+		//implement next while loop  
 		while (thisNode != null) {
 			nextNode = thisNode.next;
 			thisNode.next = formerCurrent;
