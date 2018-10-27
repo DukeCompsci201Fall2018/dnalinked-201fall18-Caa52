@@ -1,4 +1,10 @@
-
+/**
+ * 
+ * @author collins Abanda Under the implements method, initialized variables,
+ *         myAppends, myLocalIndex myIndex, myCurrent, myFirst, myLast and
+ *         mySize which are later used in the constructors called
+ *
+ */
 public class LinkStrand implements IDnaStrand {
 	private int myAppends;
 	private int myLocalIndex;
@@ -7,9 +13,24 @@ public class LinkStrand implements IDnaStrand {
 	private Node myFirst, myLast;
 	private long mySize;
 
+	/**
+	 * 
+	 * initialized info and Node next under the private node class
+	 *
+	 */
+
 	private class Node {
 		String info;
 		Node next;
+
+		/**
+		 * 
+		 * @param s represents any string assign info to string s: this makes sure what
+		 *          ever string is being operated on by the code is now contained in
+		 *          this variable called info. Assigning next to null means that every
+		 *          time I call .next initially, the it will be null, unless i fill the
+		 *          node with something to replace the null value
+		 */
 
 		public Node(String s) {
 			info = s;
@@ -17,24 +38,42 @@ public class LinkStrand implements IDnaStrand {
 		}
 	}
 
-
+	/**
+	 * 
+	 * @param newString representing the string in the LinkStrands initialize the
+	 *                  newString in this constructor LinkStrand. This is so that it
+	 *                  can be called and used in other methods
+	 */
 	public LinkStrand(String newString) {
 		initialize(newString);
 
 	}
 
+	/**
+	 * initialized LinkStrand as this. This works sort of like a reflection. this
+	 * refers to the LinkStrand.
+	 */
 	public LinkStrand() {
 		this("");
 	}
 
+	/**
+	 * this method initializes and returns mySize
+	 */
 	@Override
 	public long size() {
 		// TODO Auto-generated method stub
 		return mySize;
 	}
 
+	/**
+	 * @param source initialized all my variables in constructor initialize
+	 * @return LinkStrand(source)
+	 * 
+	 */
 	@Override
 	public void initialize(String source) {
+
 		myFirst = new Node(source);
 		myLast = myFirst;
 		mySize = source.length();
@@ -55,19 +94,36 @@ public class LinkStrand implements IDnaStrand {
 		return new LinkStrand(source);
 	}
 
+	/**
+	 * This concatenates the strings stored in each node the entire node is
+	 * essentially being changed toString it can be see as the string representation
+	 * of the entire dna strand
+	 * 
+	 * @return newBuild.toString()
+	 */
 	@Override
 	public String toString() {
-		Node stringNode = myFirst;
+		Node oneNode = myFirst;
 		StringBuilder newBuild = new StringBuilder();
-		while (stringNode != null) {
-			newBuild.append(stringNode.info);
-			stringNode = stringNode.next;
+		while (oneNode != null) {
+			newBuild.append(oneNode.info);
+			oneNode = oneNode.next;
 
 		}
 		return newBuild.toString();
 
 	}
 
+	/**
+	 * 
+	 * This constructor creates a new node with dna. The constructor then appends
+	 * the newly created node to the end of the internal linkedlist As it does this,
+	 * each time the appends method is called, myAppends is incremented by 1
+	 * 
+	 * @param dna
+	 * @return this
+	 * 
+	 */
 	@Override
 	public IDnaStrand append(String dna) {
 		// myLast.next = new Node(dna);
@@ -82,79 +138,69 @@ public class LinkStrand implements IDnaStrand {
 		return this;
 	}
 
+	/**
+	 * @return Ola creates reverse copy of linked list this method returns a new
+	 *         strand. This new strand is the reversed version of the original. this
+	 *         linked strand is the reverse of the object on which it is called
+	 *         first while loop reverses strings withtin node and then reverses
+	 *         entire string
+	 * 
+	 * @return Ola is a reversed LinkStrand that contains the newly reversed strings
+	 *         in the nodes
+	 */
 	@Override
 	public IDnaStrand reverse() {
-		
-		LinkStrand Ola = new LinkStrand();
-		Node newFirst1 = myFirst;
-		Node newFirst2 = myFirst;
 
-		StringBuilder copy = new StringBuilder(newFirst1.info);
-		copy.reverse();
-		String newCopy = copy.toString();
-		Ola.myFirst.info = newCopy;
+		Node newFirst1 = myFirst;
+		StringBuilder copy1 = new StringBuilder(newFirst1.info);
+		copy1.reverse();
+		String newCopy1 = copy1.toString();
+		LinkStrand Ola = new LinkStrand(newCopy1);
 		newFirst1 = newFirst1.next;
 
 		while (newFirst1 != null) {
-			StringBuilder copy1 = new StringBuilder(newFirst1.info);
-			copy1.reverse();
-			String newCopy1 = copy1.toString();
+			copy1 = new StringBuilder(newFirst1.info);
+			copy1.reverse(); // reverses the new stringbuilder object
+			newCopy1 = copy1.toString(); // changes the node to string
 			Node newNode = new Node(newCopy1);
-			newNode.next = Ola.myFirst;
+
+			newNode.next = Ola.myFirst; // used pointers to get an o(1) run time
 			Ola.myFirst = newNode;
-			newFirst1 = newFirst1.next;
+
+			Ola.mySize += copy1.length();
 		}
-		
-		//while (newFirst2 != null) {
-			
-			 
-			
-		//}
 
 		return Ola;
 
-		
-/*		myLast=myFirst;
-		if (myLast==null){
-			return this;
-		}
-		Node current=myFirst;
-		Node current2=myFirst.next;
-		Node current3=null;
-		if (current.next==null){
-		StringBuilder info=new StringBuilder(current.info);
-		info.reverse();
-		current.info=info.toString();
-		return this;
-		}
-		while (current.next!=null){
-			StringBuilder info=new StringBuilder(current.info);
-			info.reverse();
-			current.info=info.toString();
-			current.next=current3;
-			current3=current;
-			current=current2;
-			current2=current.next;
-		
-		}	
-		myFirst=current;
-*/
-		
-	
-		// iterate linked list
-		// when find node, create copy but in reverse
-		//
-
-		// TODO Auto-generated method stub
+		// second while loop now checks to reverse entire node
 
 	}
 
+	// iterate linked list
+	// when find node, create copy but in reverse
+	//
+
+	// TODO Auto-generated method stub
+
+	/**
+	 * return myAppends. myAppneds is called in this method
+	 */
 	@Override
 	public int getAppendCount() {
 		// TODO Auto-generated method stub
 		return myAppends;
 	}
 
+	/**
+	 * @param index
+	 * @return list.info.charAt(dex) in first while loop
+	 * @return myCurrent.info.charAt(myLocalIndex) in second while loop compare
+	 *         index to mySize and state out of bounds if the comparison is not
+	 *         possible either because index is >= mySize or index is negative, then
+	 *         throw and indexoutofboundsException make code more efficient so that
+	 *         it runs o(1) by creating a second loop to check for other cases
+	 * 
+	 */
 	@Override
 	public char charAt(int index) throws IndexOutOfBoundsException {
 		if (index >= mySize || index < 0)
@@ -175,8 +221,7 @@ public class LinkStrand implements IDnaStrand {
 			myLocalIndex = dex;
 			myCurrent = list;
 			return list.info.charAt(dex);
-		} 
-		else {
+		} else {
 			while (myIndex != index) {
 				myIndex++;
 				myLocalIndex++;
