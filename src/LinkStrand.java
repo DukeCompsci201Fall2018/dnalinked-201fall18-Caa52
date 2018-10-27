@@ -148,29 +148,47 @@ public class LinkStrand implements IDnaStrand {
 	 * @return Ola is a reversed LinkStrand that contains the newly reversed strings
 	 *         in the nodes
 	 */
+
 	@Override
 	public IDnaStrand reverse() {
 
 		Node newFirst1 = myFirst;
-		StringBuilder copy1 = new StringBuilder(newFirst1.info);
-		copy1.reverse();
-		String newCopy1 = copy1.toString();
+		StringBuilder copyBuilder1 = new StringBuilder(newFirst1.info);
+		copyBuilder1.append(newFirst1.info);
+		copyBuilder1.reverse();
+		String newCopy1 = copyBuilder1.toString();
 		LinkStrand Ola = new LinkStrand(newCopy1);
 		newFirst1 = newFirst1.next;
 
 		while (newFirst1 != null) {
-			copy1 = new StringBuilder(newFirst1.info);
-			copy1.reverse(); // reverses the new stringbuilder object
-			newCopy1 = copy1.toString(); // changes the node to string
+			copyBuilder1 = new StringBuilder();
+			copyBuilder1.append(newFirst1.info);
+			copyBuilder1.reverse(); // reverses the new stringbuilder object
+			Ola.myLast.next = new Node(copyBuilder1.toString());
+			Ola.mySize += copyBuilder1.length();
+			Ola.myLast = Ola.myLast.next;
+			newFirst1 = newFirst1.next;
+			newCopy1 = copyBuilder1.toString(); // changes the node to string
 			Node newNode = new Node(newCopy1);
 
-			newNode.next = Ola.myFirst; // used pointers to get an o(1) run time
-			Ola.myFirst = newNode;
-
-			Ola.mySize += copy1.length();
 		}
-
+		Node formerCurrent = null;
+		Node thisNode = Ola.myFirst;
+		Node nextNode = null;
+		while (thisNode != null) {
+			nextNode = thisNode.next;
+			thisNode.next = formerCurrent;
+			formerCurrent = thisNode;
+			thisNode = nextNode;
+		}
+		Ola.myFirst = formerCurrent; 
 		return Ola;
+		
+		
+		
+		
+
+
 
 		// second while loop now checks to reverse entire node
 

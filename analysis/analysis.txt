@@ -1,9 +1,30 @@
-Your Name here
-Your NetID here
-Your Partner's name here (or erase)
-Your Partner's NetID here (or erase)
+Name: Collins Abanda
+NETID: caa52
+No Partner
 
-Questions here will come from the assignment
-writeup. Be sure to copy paste questions and 
-your explanations before you push to GitHub and
-do that before uploading to Gradescope
+
+Question 1: are the benchmark timings for StringStrand consistent with the explanation below that 
+the time to execute cutAndSplice is O(b2S)? 
+
+Yes, since the runtime is dependent on s and b, in this case b is constant so it  is only dependent on s. In this case, it is linear so as s increases T increases 
+
+
+
+
+
+Question 2: are the benchmark timings for StringBuilderStrand consistent with the explanation below that 
+the time to execute cutAndSplice is O(bS)? 
+
+
+Yes. This is the same as number 1. In this case, although it is 0(bs), b does not matter at all since it is constant. It is solely dependent on s. As s increases, t increases here too 
+s
+
+
+
+
+Question 3: Explain why the time for LinkStrand does not change much at all over all the runs in the benchmark program. 
+Explain why you think memory is exhausted at the specific strand size you see in your timings -- as compared to exhaustion for String and StringBuilder.
+
+
+Here, the size in cutAndSplice does not matter because it is all constant time 
+
