@@ -87,13 +87,13 @@ public class LinkStrand implements IDnaStrand {
 		
 		LinkStrand Ola = new LinkStrand();
 		Node newFirst1 = myFirst;
-		
+		Node newFirst2 = myFirst;
+
 		StringBuilder copy = new StringBuilder(newFirst1.info);
 		copy.reverse();
 		String newCopy = copy.toString();
 		Ola.myFirst.info = newCopy;
 		newFirst1 = newFirst1.next;
-	
 
 		while (newFirst1 != null) {
 			StringBuilder copy1 = new StringBuilder(newFirst1.info);
@@ -105,10 +105,11 @@ public class LinkStrand implements IDnaStrand {
 			newFirst1 = newFirst1.next;
 		}
 		
-		while (Ola != null) {
+		//while (newFirst2 != null) {
+			
 			 
 			
-		}
+		//}
 
 		return Ola;
 
